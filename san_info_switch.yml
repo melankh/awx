@@ -1,5 +1,4 @@
 - name: information switch
-  gather_facts: no
   hosts: all
   tasks:
     - name: "switchshow"
