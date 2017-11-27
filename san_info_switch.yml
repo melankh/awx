@@ -6,6 +6,6 @@
     - name: SwitchShow
       raw: "switchshow"
       register: switchshow
-    - name Affichage
+    - name: Affichage
       debug:
         var: switchshow
