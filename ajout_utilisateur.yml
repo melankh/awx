@@ -1,0 +1,11 @@
+- name: Ajout Utilisateurs
+  hosts: all
+  tasks:
+    - name: "Check | verification presence utilisateur {{ user }}"
+      raw: "userconfig --show {{ user }} | grep ''"
+      register: userconfig
+      ignore_errors: yes
+
+    - name: "Action | Ajout de l'utilisateur {{ user }}"
+      raw: "userconfig --add {{ user }} -r {{ profil }} -p {{ password }} -l 128"
+      when: "'Named account does not exist' in userconfig.stdout"
