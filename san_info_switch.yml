@@ -5,3 +5,7 @@
   tasks:
     - name: SwitchShow
       raw: "switchshow"
+      register: switchshow
+    - name Affichage
+      debug:
+        var: switchshow
