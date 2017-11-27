@@ -1,0 +1,5 @@
+- name: information switch 
+  hosts: all
+  tasks:
+    - name: "switchshow"
+      raw: "switchshow"
