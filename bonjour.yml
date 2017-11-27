@@ -1,0 +1,6 @@
+- name: Bonjour tout le monde ! 
+  hosts: all
+  tasks:
+    - name: Un bonjour à tout le monde ! 
+      debug:
+        msg: "Bonjour tout le monde !"
