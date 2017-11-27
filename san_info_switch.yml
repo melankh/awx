@@ -1,5 +1,7 @@
 - name: information switch
   hosts: all
+# les facts doivent être désactivés dans les playbooks
+  gather_facts: no
   tasks:
-    - name: "switchshow"
+    - name: SwitchShow
       raw: "switchshow"
