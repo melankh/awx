@@ -1,0 +1,18 @@
+---
+- name: RAZ des statistiques
+  hosts: all
+# les facts doivent être désactivés dans les playbooks
+  gather_facts: no
+  tasks:
+    - name: "Check  | Recuperation modele de switch"
+      raw:  "switchshow | grep switchType"
+      register: switchshow
+
+    - name: "Action | Remise a zero des statistiques sur switch 24 ports"
+      raw:  "portstatsclear -i 0-23"
+      #when: switchshow.stdout_lines[0]  != 'switchType:     109.1'
+      when: not switchshow.stdout.find("109.1") != -1
+
+    - name: "Action | Remise a zero des statistiques sur switch 48 ports"
+      raw:  "portstatsclear -i 0-47"
+      when: switchshow.stdout.find("109.1") != -1
